@@ -2,6 +2,23 @@
 
 A comprehensive, Notion-like job application tracker built with pure HTML, CSS, and JavaScript. No build tools, no backend — just open the file and go.
 
+## Clone & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/SwatiBio/Job-tracker.git
+
+# Enter the directory
+cd Job-tracker
+
+# Serve locally (pick one)
+npx serve .          # requires Node.js
+python3 -m http.server 8000   # requires Python
+php -S localhost:8000          # requires PHP
+```
+
+Then open `http://localhost:8000` in your browser.
+
 ## Features
 
 - **Dashboard** — Stats cards, charts (status doughnut, category bar, monthly trend)
