@@ -126,14 +126,17 @@ textarea { resize: vertical; min-height: 80px; }
   padding: 16px 20px; display: flex; align-items: center; gap: 10px;
   border-bottom: 1px solid var(--border-color);
 }
-.app-name { font-weight: 600; font-size: 15px; }
-.sidebar-nav { padding: 8px; flex: 1; overflow-y: auto; scrollbar-width: thin; }
+.app-name { font-weight: 600; font-size: 15px; color: var(--text-color); text-decoration: none; cursor: pointer; }
+.app-name:hover { color: var(--accent); }
+.sidebar-nav { padding: 8px; flex: 1; overflow-y: auto; scrollbar-width: thin; display: flex; flex-direction: column; }
 .sidebar-nav::-webkit-scrollbar { width: 4px; }
 .sidebar-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
 .nav-section { margin-bottom: 8px; }
+.nav-section:last-child { margin-top: auto; margin-bottom: 0; padding-top: 8px; border-top: 1px solid var(--border-color); }
 .nav-section-title {
   font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.5px; color: var(--text-muted); padding: 8px 12px 4px;
+  letter-spacing: 0.5px; color: var(--text-muted); padding: 12px 12px 4px;
+  display: block;
 }
 .nav-item {
   display: flex; align-items: center; gap: 8px; padding: 6px 12px;
@@ -141,8 +144,9 @@ textarea { resize: vertical; min-height: 80px; }
   font-size: 14px; transition: background var(--transition);
   cursor: pointer;
 }
+
 .nav-item:hover { background: var(--sidebar-hover); color: #fff; }
-.nav-item.active { background: var(--sidebar-active); font-weight: 500; }
+.nav-item.active { background: var(--sidebar-active); color: #2E3440; font-weight: 500; }
 .nav-icon {
   font-size: 16px; width: 20px; text-align: center;
   display: inline-flex; align-items: center; justify-content: center;
@@ -162,9 +166,10 @@ textarea { resize: vertical; min-height: 80px; }
 }
 .top-bar-left { display: flex; align-items: center; gap: 16px; }
 #view-title { font-size: 18px; font-weight: 600; white-space: nowrap; }
-.view-toggles { display: flex; gap: 2px; background: var(--bg-tertiary); border-radius: var(--radius-md); padding: 2px; }
+.view-toggles { display: flex; gap: 2px; background: var(--bg-tertiary); border-radius: var(--radius-md); padding: 2px; align-items: center; }
 .view-btn {
-  padding: 4px 10px; border-radius: var(--radius-sm); font-size: 16px;
+  width: 32px; height: 32px; padding: 0; border-radius: var(--radius-sm); font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center; line-height: 0;
   transition: background var(--transition), box-shadow var(--transition);
 }
 .view-btn:hover { background: var(--bg-hover); }
