@@ -171,7 +171,7 @@ const UI = {
 
   showAdvancedSearch() {
     const cats = DB.getCategories();
-    const statuses = ['Applied', 'Phone Screen', 'Technical', 'Final', 'Offer', 'Rejected', 'Withdrawn'];
+    const statuses = ['Not Applied', 'Applied', 'Offer', 'Rejected', 'Withdrawn'];
     const body = document.createElement('div');
     body.innerHTML = `
       <div class="advanced-search">

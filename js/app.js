@@ -103,7 +103,8 @@ const App = {
       document.getElementById('job-company').value = job.company || '';
       document.getElementById('job-position').value = job.position || '';
       document.getElementById('job-date').value = job.date || '';
-      document.getElementById('job-status').value = job.status || 'Applied';
+      document.getElementById('job-applied-date').value = job.appliedDate || '';
+      document.getElementById('job-status').value = job.status || 'Not Applied';
       document.getElementById('job-category').value = job.category || 'General';
       document.getElementById('job-salary').value = job.salary || '';
       document.getElementById('job-location').value = job.location || '';
@@ -131,6 +132,7 @@ const App = {
       company: document.getElementById('job-company').value.trim(),
       position: document.getElementById('job-position').value.trim(),
       date: document.getElementById('job-date').value,
+      appliedDate: document.getElementById('job-applied-date').value,
       status: document.getElementById('job-status').value,
       category: document.getElementById('job-category').value,
       salary: document.getElementById('job-salary').value.trim(),
@@ -196,8 +198,12 @@ const App = {
       </div>
       <div class="flex gap-8" style="flex-wrap:wrap">
         <div class="detail-field" style="flex:1">
-          <div class="detail-label">Date Applied</div>
+          <div class="detail-label">Deadline</div>
           <div class="detail-value">${UI.formatDate(job.date)}</div>
+        </div>
+        <div class="detail-field" style="flex:1">
+          <div class="detail-label">Date Applied</div>
+          <div class="detail-value">${UI.formatDate(job.appliedDate)}</div>
         </div>
         <div class="detail-field" style="flex:1">
           <div class="detail-label">Salary</div>

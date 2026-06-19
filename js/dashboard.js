@@ -16,21 +16,20 @@ const Dashboard = {
     jobs.forEach(j => {
       statusCounts[j.status] = (statusCounts[j.status] || 0) + 1;
       catCounts[j.category] = (catCounts[j.category] || 0) + 1;
-      if (j.date) {
-        const d = new Date(j.date);
+      const dstr = j.appliedDate || j.date;
+      if (dstr) {
+        const d = new Date(dstr);
         const key = `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
         monthlyCounts[key] = (monthlyCounts[key] || 0) + 1;
       }
     });
 
+    const notApplied = statusCounts['Not Applied'] || 0;
     const applied = statusCounts['Applied'] || 0;
-    const phoneScreen = statusCounts['Phone Screen'] || 0;
-    const technical = statusCounts['Technical'] || 0;
-    const final = statusCounts['Final'] || 0;
     const offers = statusCounts['Offer'] || 0;
     const rejected = statusCounts['Rejected'] || 0;
-    const activePipeline = applied + phoneScreen + technical + final;
-    const responseRate = jobs.length ? Math.round((phoneScreen + technical + final + offers) / jobs.length * 100) : 0;
+    const activePipeline = notApplied + applied;
+    const responseRate = jobs.length ? Math.round((offers) / jobs.length * 100) : 0;
 
     container.innerHTML = `
       <div class="dashboard-stats">
@@ -86,8 +85,8 @@ const Dashboard = {
 
     if (!statusCtx || !catCtx || !monthlyCtx) return;
 
-    const statusOrder = ['Applied', 'Phone Screen', 'Technical', 'Final', 'Offer', 'Rejected', 'Withdrawn'];
-    const statusColors = ['#3b82f6', '#6366f1', '#f59e0b', '#ec4899', '#10b981', '#ef4444', '#6b7280'];
+    const statusOrder = ['Not Applied', 'Applied', 'Offer', 'Rejected', 'Withdrawn'];
+    const statusColors = ['#6b7280', '#3b82f6', '#10b981', '#ef4444', '#9ca3af'];
 
     if (typeof Chart !== 'undefined') {
       this.charts.status = new Chart(statusCtx, {

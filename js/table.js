@@ -13,7 +13,8 @@ const TableView = {
       { field: 'position', label: 'Position' },
       { field: 'status', label: 'Status' },
       { field: 'category', label: 'Category' },
-      { field: 'date', label: 'Date' },
+      { field: 'date', label: 'Deadline' },
+      { field: 'appliedDate', label: 'Applied' },
       { field: 'salary', label: 'Salary' },
       { field: 'location', label: 'Location' },
     ];
@@ -36,12 +37,13 @@ const TableView = {
       let va = (a[this.sortField] || '').toString().toLowerCase();
       let vb = (b[this.sortField] || '').toString().toLowerCase();
       if (this.sortField === 'date') { va = a.date || ''; vb = b.date || ''; }
+      if (this.sortField === 'appliedDate') { va = a.appliedDate || ''; vb = b.appliedDate || ''; }
       if (this.sortField === 'salary') { va = a.salary || ''; vb = b.salary || ''; }
       return va < vb ? -this.sortDir : va > vb ? this.sortDir : 0;
     });
 
     if (jobs.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:48px;color:var(--text-muted)">No jobs found</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:48px;color:var(--text-muted)">No jobs found</td></tr>';
     } else {
       tbody.innerHTML = jobs.map(j => `
         <tr data-job-id="${j.id}" style="cursor:pointer">
@@ -50,6 +52,7 @@ const TableView = {
           <td>${UI.statusBadge(j.status)}</td>
           <td>${UI.escapeHtml(j.category || 'General')}</td>
           <td>${UI.formatDate(j.date)}</td>
+          <td>${UI.formatDate(j.appliedDate) || '-'}</td>
           <td>${UI.formatCurrency(j.salary)}</td>
           <td>${UI.escapeHtml(j.location || '-')}</td>
         </tr>

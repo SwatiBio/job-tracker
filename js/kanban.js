@@ -1,6 +1,6 @@
 /* === Kanban Board View === */
 const Kanban = {
-  statuses: ['Applied', 'Phone Screen', 'Technical', 'Final', 'Offer', 'Rejected', 'Withdrawn'],
+  statuses: ['Not Applied', 'Applied', 'Offer', 'Rejected', 'Withdrawn'],
   dragSrcId: null,
 
   render() {
@@ -61,6 +61,7 @@ const Kanban = {
         <span>${UI.formatDate(job.date)}</span>
         ${job.salary ? `<span>${UI.escapeHtml(job.salary)}</span>` : ''}
         ${job.location ? `<span>${UI.escapeHtml(job.location)}</span>` : ''}
+        ${job.appliedDate ? `<span>Applied: ${UI.formatDate(job.appliedDate)}</span>` : ''}
       </div>
       <div>
         <span class="card-category">${UI.escapeHtml(job.category || 'General')}</span>
