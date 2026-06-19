@@ -77,6 +77,8 @@ input, select, textarea {
   border-radius: var(--radius-sm); padding: 8px 12px; outline: none; width: 100%;
   transition: border-color var(--transition), background var(--transition);
 }
+select option { background: var(--bg-secondary); color: var(--text-primary); }
+select option:hover { background: var(--bg-hover); }
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent);
   background: rgba(255,255,255,0.12);
